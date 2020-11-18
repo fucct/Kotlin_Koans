@@ -1,5 +1,15 @@
 data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int) : Comparable<MyDate> {
-    /* TODO */
+    override operator fun compareTo(other: MyDate): Int {
+        return if (this.year == other.year) {
+            if (this.month == other.month) {
+                this.dayOfMonth.compareTo(other.dayOfMonth)
+            } else {
+                this.month.compareTo(other.month)
+            }
+        } else {
+            this.year.compareTo(other.year)
+        }
+    }
 }
 
 fun test(date1: MyDate, date2: MyDate) {
